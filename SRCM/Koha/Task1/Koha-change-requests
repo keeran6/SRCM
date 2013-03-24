@@ -1,0 +1,36 @@
+FEB-18th:
+	- Need to have search option based on language type of book written. e.g if a book is written in kannada, if language criteria is selected, search for a book in that language need to be done.
+	search logic should be based on 
+		a.) First check Language code (041), if not defined/empty, then check below values
+		b.) 008  ? - FIXED-LENGTH DATA ELEMENTS--GENERAL INFORMATION (field 27 to 30 character position) For e.g. if und is mentioned, it means language is not defined.
+		c.) Language of a work entry?
+
+Clue: opac-search.pl, prog/en/includes/masthead.inc
+changed the masthead.inc code to support language search option. but the search works only if the Language Code is present  041 ##;  
+
+Todo: Support the search based on the language 008 (35-37 bits) and also check the 100 field of marcview. Trying to enable the logger;
+Completed - 8th March, except porting to original server;
+
+Task2: 
+	- Need to provide search summary for books which are available more than one copy. i.e Search should not show more copies of same book title & author, but just one instance with as many copies.
+
+Refer sites about the background knowledge on koha search: zebra
+http://wiki.koha-community.org/wiki/Search_Info
+http://www.len.ro/work/koha-search-2/
+
+check below fields if duplicate copy;
+100    $a Ingham,  Eunice D 
+245    $a Stories the Feet Can Tell $c  Eunice D Ingham $b Stepping to Better Health
+250    $b 65th Printing
+260    $b Eunice D Ingham  $a Rochester N Y $c c1966
+
+Fix/changes went into following files:
+
+1.) Availablecount in template (opac-result.tt) from available_item.loo.count(); line 469;
+2.) FindDuplicate function added to search.pm; also refer filter_duplicate;
+3.) Under opac-search.pl @line 529/530
+
+There are improvements need to be discussed; Present solution is temporary;
+Also refer duplicatefinder.tt and duplicatesearch.tt files in recent git source Bug6813.
+
+

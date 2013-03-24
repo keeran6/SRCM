@@ -1,0 +1,23 @@
+Task1:
+Objective:
+
+
+Solution:
+Steps to do:
+Changes in following files required:
+ etc/zebradb/biblios/etc/bib1.att                 
+ etc/zebradb/ccl.properties                        
+ .../marc21/biblios/biblio-koha-indexdefs.xml    
+ .../marc21/biblios/biblio-zebra-indexdefs.xsl    
+ etc/zebradb/marc_defs/marc21/biblios/record.abs  
+Add language option in masthead.inc
+
+Finally, Re-indexing will re-create the zebra db; 
+
+
+/usr/share/koha/opac/htdocs/opac-tmpl/prog/en/includes/masthead.inc
+
+
+then update bib1.att to support patron card number;
+then update ccl prop file.
+then update the index files koha/zebra index (refer link1). 

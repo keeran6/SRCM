@@ -1,0 +1,23 @@
+Task1:
+Objective:
+	- Need to have user search option based on language type of book written. e.g if a book is written in kannada, if language criteria is selected, search for a book in that language need to be done.
+
+Solution:
+Steps to do:
+1.) Add Language tag, search index option  under following path file: (approx., line number 75+)
+/usr/share/koha/opac/htdocs/opac-tmpl/prog/en/includes/masthead.inc
+
+2.) Changes in following files required:
+/etc/koha/zebradb/biblios/etc/bib1.att                
+/etc/koha/zebradb/ccl.properties                       
+/etc/koha/zebradb/marc_defs/marc21/biblios/biblio-koha-indexdefs.xml   
+/etc/koha/zebradb/marc_defs/marc21/biblios/biblio-zebra-indexdefs.xsl   
+/etc/koha/zebradb/marc_defs/marc21/biblios/record.abs 
+
+3.) Finally, Re-indexing will re-create the zebra db;
+use cmd: sudo perl /usr/share/koha/bin/migration_tools/rebuild_zebra.pl -b -a -r
+
+ 
+
+
+ 

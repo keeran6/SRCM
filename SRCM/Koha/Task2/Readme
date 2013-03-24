@@ -1,0 +1,14 @@
+AIM:How to filter out duplicate books from "koha" user search results and show only unique book title with available count;
+
+Hint to solution: Need function to filter out the duplicates based on book title name, author, isbn number.
+
+
+
+Solution:
+Steps to do: (Assuming the koha 3.8.x above installed on ubuntu 12.04)
+
+1.) Added FindDuplicate function in search.pm
+2.) Changed available_item.loo.count(); to Availablecount in template opac-result.tt file from  line 469;
+3.) Added  FindDuplicate function call Under opac-search.pl @line 529/530
+
+Known limitation: This solution shows indexing number of first unique titles, author only and hence sequence of indexing may confuse user as duplicates are hidden
